@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  api:
+    image: linkextractor-api:step6-ruby
+    build: ./api
+    ports:
+      - "4567:4567"
+  #  environment:
+   #   - REDIS_URL=redis://redis:6379
+    volumes:
+      - ./logs:/app/logs
+  web:
+    image: linkextractor-web:step6-php
+    build: ./www
+    ports:
+      - "80:80"
+    environment:
+      - API_ENDPOINT=http://api:4567/api/
+ # redis:
+  #  image: redis
+  # --- SERVIÇO DO LOCUST ---
+  locust:
+    image: grubykarol/locust
+    container_name: locust_master
+    ports:
+      # Expõe a porta 8089 para acessarmos a interface web do Locust
+      - "8089:8089"
+    volumes:
+      # Mapeia o locustfile.py da pasta-pai (linkextractor/)
+      # para dentro do contêiner.
+      - ../locustfile.py:/locust/locustfile.py:ro
+    environment:
+      # O alvo do ataque é o serviço 'web' (o frontend PHP)
+      ATTACKED_HOST: http://web
+      LOCUST_FILE: /locust/locustfile.py
+    # O docker-compose deste projeto não define uma rede customizada,
+    # então o Locust usará a rede 'default' para se conectar ao 'web'.
+    depends_on:
+      - web
