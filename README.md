@@ -54,7 +54,7 @@ Cada requisição simulava o comportamento de um usuário utilizando a aplicaç�
 
 ### Tempo médio de resposta
 
-![Comparativo geral - Tempo médio de resposta](graficos/comparativo_colunas_media.png)
+![Comparativo geral - Tempo médio de resposta](atividade-linkextractor-desempenho-alanis/graficos/comparativo_colunas_media.png)
 
 O gráfico apresenta o **tempo médio de resposta** dos quatro cenários testados.
 
@@ -67,7 +67,7 @@ A versão **Python com cache** apresentou o melhor comportamento geral, mantendo
 
 ### Tempo mediano de resposta
 
-![Comparativo geral - Tempo mediano de resposta](graficos/comparativo_colunas_mediana.png)
+![Comparativo geral - Tempo mediano de resposta](atividade-linkextractor-desempenho-alanis/graficos/comparativo_colunas_mediana.png)
 
 A mediana representa o tempo de resposta mais típico observado durante os testes.
 
@@ -80,7 +80,7 @@ Isso indica que, sem cache, a aplicação precisa buscar e processar novamente o
 
 ### Percentil 95 do tempo de resposta
 
-![Comparativo geral - Percentil 95](graficos/comparativo_colunas_p95.png)
+![Comparativo geral - Percentil 95](atividade-linkextractor-desempenho-alanis/graficos/comparativo_colunas_p95.png)
 
 O percentil 95 indica que 95% das requisições tiveram tempo de resposta igual ou inferior ao valor apresentado no gráfico.
 
@@ -93,7 +93,7 @@ Já os cenários com cache tiveram valores menores, demonstrando que o Redis aju
 
 ### Requisições por segundo
 
-![Comparativo geral - Requisições por segundo](graficos/comparativo_colunas_rps.png)
+![Comparativo geral - Requisições por segundo](atividade-linkextractor-desempenho-alanis/graficos/comparativo_colunas_rps.png)
 
 O gráfico de requisições por segundo mostra a capacidade da aplicação de atender múltiplas requisições simultaneamente.
 
@@ -103,22 +103,11 @@ O cenário **Ruby sem cache** teve o pior desempenho em RPS, indicando dificulda
 
 ---
 
-### Falhas por cenário
-
-![Comparativo geral - Falhas](graficos/comparativo_colunas_falhas.png)
-
-O gráfico de falhas apresenta a quantidade de requisições que não foram concluídas com sucesso durante os testes.
-
-Nos testes realizados, não foram observadas falhas relevantes nos cenários avaliados.  
-Isso indica que, apesar das diferenças de desempenho entre as versões e entre o uso ou não de cache, a aplicação conseguiu responder às requisições sem erros significativos durante a execução dos testes.
-
----
-
 ## Comparação entre Python e Ruby com Cache
 
 ### Tempo médio de resposta com cache
 
-![Com cache - Tempo médio Python vs Ruby](graficos/com_cache_media_python_vs_ruby.png)
+![Com cache - Tempo médio Python vs Ruby](atividade-linkextractor-desempenho-alanis/graficos/com_cache_media_python_vs_ruby.png)
 
 Neste gráfico, são comparadas as versões Python e Ruby utilizando o cache Redis.
 
@@ -129,7 +118,7 @@ Isso indica que, quando o cache está ativo, a implementação em Python consegu
 
 ### Tempo mediano de resposta com cache
 
-![Com cache - Tempo mediano Python vs Ruby](graficos/com_cache_mediana_python_vs_ruby.png)
+![Com cache - Tempo mediano Python vs Ruby](atividade-linkextractor-desempenho-alanis/graficos/com_cache_mediana_python_vs_ruby.png)
 
 A mediana com cache reforça que o Python teve desempenho mais estável e rápido na maior parte das requisições.
 
@@ -139,7 +128,7 @@ A versão Ruby também foi beneficiada pelo cache, mas ainda apresentou tempos m
 
 ### Percentil 95 com cache
 
-![Com cache - Percentil 95 Python vs Ruby](graficos/com_cache_p95_python_vs_ruby.png)
+![Com cache - Percentil 95 Python vs Ruby](atividade-linkextractor-desempenho-alanis/graficos/com_cache_p95_python_vs_ruby.png)
 
 O percentil 95 com cache mostra que o Redis ajudou a reduzir os tempos mais altos de resposta em ambas as versões.
 
@@ -149,7 +138,7 @@ Mesmo assim, o Python com cache apresentou comportamento mais eficiente, mantend
 
 ### Requisições por segundo com cache
 
-![Com cache - RPS Python vs Ruby](graficos/com_cache_rps_python_vs_ruby.png)
+![Com cache - RPS Python vs Ruby](atividade-linkextractor-desempenho-alanis/graficos/com_cache_rps_python_vs_ruby.png)
 
 Com o cache ativo, a versão **Python** apresentou maior capacidade de atendimento, alcançando mais requisições por segundo do que a versão Ruby.
 
@@ -161,7 +150,7 @@ Esse resultado mostra que o Python com cache teve melhor aproveitamento da carga
 
 ### Tempo médio de resposta sem cache
 
-![Sem cache - Tempo médio Python vs Ruby](graficos/sem_cache_media_python_vs_ruby.png)
+![Sem cache - Tempo médio Python vs Ruby](atividade-linkextractor-desempenho-alanis/graficos/sem_cache_media_python_vs_ruby.png)
 
 Neste cenário, o cache Redis foi desativado, fazendo com que a aplicação precisasse extrair os links diretamente da URL a cada requisição.
 
@@ -173,7 +162,7 @@ A versão **Ruby sem cache** apresentou o pior desempenho, com crescimento expre
 
 ### Tempo mediano de resposta sem cache
 
-![Sem cache - Tempo mediano Python vs Ruby](graficos/sem_cache_mediana_python_vs_ruby.png)
+![Sem cache - Tempo mediano Python vs Ruby](atividade-linkextractor-desempenho-alanis/graficos/sem_cache_mediana_python_vs_ruby.png)
 
 A mediana sem cache mostra que o tempo típico de resposta também foi afetado pela ausência do Redis.
 
@@ -185,7 +174,7 @@ Isso demonstra que o cache tem papel importante na redução do custo de process
 
 ### Percentil 95 sem cache
 
-![Sem cache - Percentil 95 Python vs Ruby](graficos/sem_cache_p95_python_vs_ruby.png)
+![Sem cache - Percentil 95 Python vs Ruby](atividade-linkextractor-desempenho-alanis/graficos/sem_cache_p95_python_vs_ruby.png)
 
 O percentil 95 sem cache apresentou os maiores valores entre todos os cenários testados.
 
@@ -197,7 +186,7 @@ O resultado mostra que a ausência do cache impacta não apenas o tempo médio, 
 
 ### Requisições por segundo sem cache
 
-![Sem cache - RPS Python vs Ruby](graficos/sem_cache_rps_python_vs_ruby.png)
+![Sem cache - RPS Python vs Ruby](atividade-linkextractor-desempenho-alanis/graficos/sem_cache_rps_python_vs_ruby.png)
 
 Sem cache, a capacidade de atendimento da aplicação foi reduzida.
 
